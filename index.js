@@ -5,7 +5,7 @@ const timeEl = document.querySelector('.time')
 const board = document.querySelector('#board')
 
 let color = ['red','green','blue','pink','yellow']
-let time = 20;
+let time = 0;
 let score = 0;
 
 startBtn.addEventListener('click', event => {
@@ -37,6 +37,8 @@ function startGame() {
 }
 function setTime(value) {
     timeEl.innerHTML = `00:${value}`
+    if(value < 10) {
+           timeEl.innerHTML = `00:0${value}`
 }
 function decreaseTime() {
     if(time === 0) {
@@ -51,6 +53,7 @@ function decreaseTime() {
 }
 
 function finishGame() {
+    timeEl.parentNode.remove()
     board.innerHTML = `<h1>Счёт: <span class="primary">${score}</span></h1>`
 }
 function createRandomCircle() {
